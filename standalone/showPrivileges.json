@@ -1,0 +1,284 @@
+{
+	"roles" : [
+		{
+			"role" : "dbOwner",
+			"db" : "playground",
+			"isBuiltin" : true,
+			"roles" : [ ],
+			"inheritedRoles" : [ ],
+			"privileges" : [
+				{
+					"resource" : {
+						"db" : "playground",
+						"collection" : ""
+					},
+					"actions" : [
+						"bypassDocumentValidation",
+						"changeCustomData",
+						"changePassword",
+						"changeStream",
+						"collMod",
+						"collStats",
+						"compact",
+						"convertToCapped",
+						"createCollection",
+						"createIndex",
+						"createRole",
+						"createUser",
+						"dbHash",
+						"dbStats",
+						"dropCollection",
+						"dropDatabase",
+						"dropIndex",
+						"dropRole",
+						"dropUser",
+						"emptycapped",
+						"enableProfiler",
+						"find",
+						"grantRole",
+						"insert",
+						"killCursors",
+						"listCollections",
+						"listIndexes",
+						"planCacheIndexFilter",
+						"planCacheRead",
+						"planCacheWrite",
+						"reIndex",
+						"remove",
+						"renameCollectionSameDB",
+						"repairDatabase",
+						"revokeRole",
+						"setAuthenticationRestriction",
+						"storageDetails",
+						"update",
+						"validate",
+						"viewRole",
+						"viewUser"
+					]
+				},
+				{
+					"resource" : {
+						"db" : "playground",
+						"collection" : "system.indexes"
+					},
+					"actions" : [
+						"changeStream",
+						"collStats",
+						"dbHash",
+						"dbStats",
+						"find",
+						"killCursors",
+						"listCollections",
+						"listIndexes",
+						"planCacheRead"
+					]
+				},
+				{
+					"resource" : {
+						"db" : "playground",
+						"collection" : "system.js"
+					},
+					"actions" : [
+						"changeStream",
+						"collStats",
+						"convertToCapped",
+						"createCollection",
+						"createIndex",
+						"dbHash",
+						"dbStats",
+						"dropCollection",
+						"dropIndex",
+						"emptycapped",
+						"find",
+						"insert",
+						"killCursors",
+						"listCollections",
+						"listIndexes",
+						"planCacheRead",
+						"remove",
+						"renameCollectionSameDB",
+						"update"
+					]
+				},
+				{
+					"resource" : {
+						"db" : "playground",
+						"collection" : "system.namespaces"
+					},
+					"actions" : [
+						"changeStream",
+						"collStats",
+						"dbHash",
+						"dbStats",
+						"find",
+						"killCursors",
+						"listCollections",
+						"listIndexes",
+						"planCacheRead"
+					]
+				},
+				{
+					"resource" : {
+						"db" : "playground",
+						"collection" : "system.profile"
+					},
+					"actions" : [
+						"changeStream",
+						"collStats",
+						"convertToCapped",
+						"createCollection",
+						"dbHash",
+						"dbStats",
+						"dropCollection",
+						"find",
+						"killCursors",
+						"listCollections",
+						"listIndexes",
+						"planCacheRead"
+					]
+				}
+			],
+			"inheritedPrivileges" : [
+				{
+					"resource" : {
+						"db" : "playground",
+						"collection" : ""
+					},
+					"actions" : [
+						"bypassDocumentValidation",
+						"changeStream",
+						"collMod",
+						"collStats",
+						"compact",
+						"convertToCapped",
+						"createCollection",
+						"createIndex",
+						"dbHash",
+						"dbStats",
+						"dropCollection",
+						"dropDatabase",
+						"dropIndex",
+						"emptycapped",
+						"enableProfiler",
+						"find",
+						"insert",
+						"killCursors",
+						"listCollections",
+						"listIndexes",
+						"planCacheIndexFilter",
+						"planCacheRead",
+						"planCacheWrite",
+						"reIndex",
+						"remove",
+						"renameCollectionSameDB",
+						"repairDatabase",
+						"storageDetails",
+						"update",
+						"validate"
+					]
+				},
+				{
+					"resource" : {
+						"db" : "playground",
+						"collection" : "system.indexes"
+					},
+					"actions" : [
+						"changeStream",
+						"collStats",
+						"dbHash",
+						"dbStats",
+						"find",
+						"killCursors",
+						"listCollections",
+						"listIndexes",
+						"planCacheRead"
+					]
+				},
+				{
+					"resource" : {
+						"db" : "playground",
+						"collection" : "system.js"
+					},
+					"actions" : [
+						"changeStream",
+						"collStats",
+						"convertToCapped",
+						"createCollection",
+						"createIndex",
+						"dbHash",
+						"dbStats",
+						"dropCollection",
+						"dropIndex",
+						"emptycapped",
+						"find",
+						"insert",
+						"killCursors",
+						"listCollections",
+						"listIndexes",
+						"planCacheRead",
+						"remove",
+						"renameCollectionSameDB",
+						"update"
+					]
+				},
+				{
+					"resource" : {
+						"db" : "playground",
+						"collection" : "system.namespaces"
+					},
+					"actions" : [
+						"changeStream",
+						"collStats",
+						"dbHash",
+						"dbStats",
+						"find",
+						"killCursors",
+						"listCollections",
+						"listIndexes",
+						"planCacheRead"
+					]
+				},
+				{
+					"resource" : {
+						"db" : "playground",
+						"collection" : "system.profile"
+					},
+					"actions" : [
+						"changeStream",
+						"collStats",
+						"convertToCapped",
+						"createCollection",
+						"dbHash",
+						"dbStats",
+						"dropCollection",
+						"find",
+						"killCursors",
+						"listCollections",
+						"listIndexes",
+						"planCacheRead"
+					]
+				},
+				{
+					"resource" : {
+						"db" : "playground",
+						"collection" : ""
+					},
+					"actions" : [
+						"changeCustomData",
+						"changePassword",
+						"createRole",
+						"createUser",
+						"dropRole",
+						"dropUser",
+						"grantRole",
+						"revokeRole",
+						"setAuthenticationRestriction",
+						"viewRole",
+						"viewUser"
+					]
+				}
+			]
+		}
+	],
+	"ok" : 1
+}
