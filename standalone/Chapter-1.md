@@ -103,6 +103,7 @@ mongo admin --host localhost:27000 --eval '
 ```
 sudo mkdir -p /var/mongodb/db /var/mongodb/log
 sudo chown -R vagrant:vagrant /var/mongodb
+sudo cp mongod.conf /etc/mongod.conf
 mongod --config /etc/mongod.conf
 ```
 ```
@@ -421,20 +422,37 @@ mongoimport --verbose --port 27000 --username root --password root --authenticat
 ```
 
 ## Lab - Importing a Dataset:
-- Using `mongoimport` to import a JSON dataset into MongoDB.
-Import the whole dataset with your application's user m103-application-user into a collection called products
+- Preparing the host
 ```
+sudo mkdir -p /var/mongodb/db /var/mongodb/log
+sudo chown -R vagrant:vagrant /var/mongodb
+sudo cp mongod.conf /etc/mongod.conf
+mongod --config /etc/mongod.conf
+
+mongo --host 127.0.0.1 --port 27000
+use admin
+db.createUser({
+    user: "root", 
+    pwd: "root", 
+    roles: [ "root" ]
+})
+
+db.createUser({
+    user: "m103-admin",
+    pwd: "m103-pass",
+    roles: [ { role: "root", db: "admin" } ]
+})
+
+mongo --port 27000 --username root --password root --authenticationDatabase admin
 db.createUser(
   { user: "m103-application-user",
     pwd: "m103-application-pass",
     roles: [ { db: "applicationData", role: "readWrite" } ]
   }
 )
-
-mongoimport --verbose --port 27000 --username m103-application-user --password m103-application-pass --authenticationDatabase admin --db applicationData --collection products products.json
-
-// Drop user
-db.dropUser("m103-application-user", {w: "majority", wtimeout: 5000})
 ```
-
-# https://university.mongodb.com/mercury/M103/2020_March_24/chapter/Chapter_1_The_Mongod/lesson/5a99f9aa81c2657f7cdbf5f3/lecture
+- Using `mongoimport` to import a JSON dataset into MongoDB.
+Import the whole dataset with your application's user m103-application-user into a collection called products
+```
+mongoimport --verbose --port 27000 --username m103-application-user --password m103-application-pass --authenticationDatabase admin --db applicationData --collection products products.json
+```
