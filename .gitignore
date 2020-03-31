@@ -1,2 +1,4 @@
 .vagrant/
 dataset/
+standalone/labs.conf
+replication/labs.conf

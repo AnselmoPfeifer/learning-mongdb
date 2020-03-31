@@ -1,0 +1,61 @@
+{
+	"set" : "replExample",
+	"date" : ISODate("2020-03-31T20:13:13.450Z"),
+	"myState" : 1,
+	"term" : NumberLong(1),
+	"syncingTo" : "",
+	"syncSourceHost" : "",
+	"syncSourceId" : -1,
+	"heartbeatIntervalMillis" : NumberLong(2000),
+	"optimes" : {
+		"lastCommittedOpTime" : {
+			"ts" : Timestamp(1585685588, 1),
+			"t" : NumberLong(1)
+		},
+		"readConcernMajorityOpTime" : {
+			"ts" : Timestamp(1585685588, 1),
+			"t" : NumberLong(1)
+		},
+		"appliedOpTime" : {
+			"ts" : Timestamp(1585685588, 1),
+			"t" : NumberLong(1)
+		},
+		"durableOpTime" : {
+			"ts" : Timestamp(1585685588, 1),
+			"t" : NumberLong(1)
+		}
+	},
+	"members" : [
+		{
+			"_id" : 0,
+			"name" : "192.168.103.100:27011",
+			"health" : 1,
+			"state" : 1,
+			"stateStr" : "PRIMARY",
+			"uptime" : 590,
+			"optime" : {
+				"ts" : Timestamp(1585685588, 1),
+				"t" : NumberLong(1)
+			},
+			"optimeDate" : ISODate("2020-03-31T20:13:08Z"),
+			"syncingTo" : "",
+			"syncSourceHost" : "",
+			"syncSourceId" : -1,
+			"infoMessage" : "",
+			"electionTime" : Timestamp(1585685287, 2),
+			"electionDate" : ISODate("2020-03-31T20:08:07Z"),
+			"configVersion" : 1,
+			"self" : true,
+			"lastHeartbeatMessage" : ""
+		}
+	],
+	"ok" : 1,
+	"operationTime" : Timestamp(1585685588, 1),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1585685588, 1),
+		"signature" : {
+			"hash" : BinData(0,"COphmh4DfOdAxDbwD83ZTK7Cqdk="),
+			"keyId" : NumberLong("6810466453708341250")
+		}
+	}
+}

@@ -1,4 +1,4 @@
-## Chapter 1
+# Chapter 1: The Mongod
 
 ## Launching and shutdown Mongo Server  
 - 1: 
@@ -311,7 +311,7 @@ db.createUser(
   }
 ) 
 ```
-- Connect to mongod and authenticate as root, and run DB stats: ([Result](stats.json))
+- Connect to mongod and authenticate as root, and run DB stats: ([Result](result/stats.json))
 ```
 mongo --port 27000 --username root --password root --authenticationDatabase admin
 db.stats()
@@ -349,7 +349,7 @@ db.createUser(
 ```
 db.grantRolesToUser( "dba",  [ { db: "playground", role: "dbOwner"  } ] )
 ```
-- Show role privileges: [Result](showPrivileges.json)
+- Show role privileges: [Result](result/showPrivileges.json)
 ```
 db.runCommand( { rolesInfo: { role: "dbOwner", db: "playground" }, showPrivileges: true} ) 
 ```

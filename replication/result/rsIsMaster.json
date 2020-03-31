@@ -1,0 +1,43 @@
+{
+	"hosts" : [
+		"192.168.103.100:27011",
+		"192.168.103.100:27012",
+		"192.168.103.100:27013"
+	],
+	"setName" : "replExample",
+	"setVersion" : 3,
+	"ismaster" : true,
+	"secondary" : false,
+	"primary" : "192.168.103.100:27011",
+	"me" : "192.168.103.100:27011",
+	"electionId" : ObjectId("7fffffff0000000000000001"),
+	"lastWrite" : {
+		"opTime" : {
+			"ts" : Timestamp(1585686088, 1),
+			"t" : NumberLong(1)
+		},
+		"lastWriteDate" : ISODate("2020-03-31T20:21:28Z"),
+		"majorityOpTime" : {
+			"ts" : Timestamp(1585686088, 1),
+			"t" : NumberLong(1)
+		},
+		"majorityWriteDate" : ISODate("2020-03-31T20:21:28Z")
+	},
+	"maxBsonObjectSize" : 16777216,
+	"maxMessageSizeBytes" : 48000000,
+	"maxWriteBatchSize" : 100000,
+	"localTime" : ISODate("2020-03-31T20:21:34.712Z"),
+	"logicalSessionTimeoutMinutes" : 30,
+	"minWireVersion" : 0,
+	"maxWireVersion" : 6,
+	"readOnly" : false,
+	"ok" : 1,
+	"operationTime" : Timestamp(1585686088, 1),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1585686088, 1),
+		"signature" : {
+			"hash" : BinData(0,"JXVRe4F6Hed5Hi0XjfcB3F/aoDA="),
+			"keyId" : NumberLong("6810466453708341250")
+		}
+	}
+}
