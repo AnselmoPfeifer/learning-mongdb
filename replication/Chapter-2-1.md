@@ -18,14 +18,17 @@ mongod -f /etc/mongod/node3.conf
 ss -tlnp
 ps -aef | grep [m]ongod
 ```
+
 - Connecting to node1:
 ```
 mongo --port 27011
 ```
+
 - Initiating the replica set:
 ```
 rs.initiate()
 ```
+
 - Creating a user:
 ``` 
 use admin
@@ -43,15 +46,18 @@ db.createUser({
 mongo --host "replExample/192.168.103.100:27011" -u "m103-admin" -p "m103-pass" --authenticationDatabase "admin"
 rs.status()
 ```
+
 - Adding other members to replica set and get replica status: ([Result](result/rsStatus2.json))
 ```
 rs.add("192.168.103.100:27012")
 rs.add("192.168.103.100:27013")
 ```
+
 - Getting an overview of the replica set topology: ([Result](result/rsIsMaster.json))
 ```
 rs.isMaster()
 ```
+
 - Stepping down the current primary and Checking replica set overview after election: ([Result](result/rsIsMaster2.json))
 ```
 rs.stepDown()
@@ -115,14 +121,17 @@ rs.add("192.168.103.100:27003")
 ```
 rs.status()
 ```
+
 - Describe a node's role in the replica set, a shorter output than previous command
 ```
 rs.isMaster()
 ```
+
 - Section of the `db.serverStatus()`output and similar to the output of `rs.isMaster()`
 ```
 db.serverStatus()['repl']
 ```
+
 - Only returns oplog data relative to current node
 ```
 rs.printReplicationInfo()
@@ -134,6 +143,7 @@ rs.printReplicationInfo()
 use local
 db.oplog.rs.find()
 ```
+
 - Storing oplog stats as a variable called stats:
 - Verifying that this collection is capped,
 - Getting current size of the oplog,
@@ -144,6 +154,7 @@ stats.capped
 stats.size
 stats.maxSize
 ```
+
 - Getting current oplog data (including first and last event times, and configured oplog size):
 ```
 rs.printReplicationInfo()
@@ -155,22 +166,26 @@ rs.printReplicationInfo()
 use m103
 db.createCollection('messages')
 ```
+
 - Query the oplog, filtering out the heartbeats ("periodic noop") and only returning the latest entry:
 ```
 use local
 db.oplog.rs.find( { "o.msg": { $ne: "periodic noop" } } ).sort( { $natural: -1 } ).limit(1).pretty()
 ```
+
 - Inserting 100 different documents:
 ```
 use m103
 for ( i=0; i< 100; i++) { db.messages.insert( { 'msg': 'not yet', _id: i } ) }
 db.messages.count()
 ```
+
 - Querying the oplog to find all operations related to m103.messages:
 ```
 use local
 db.oplog.rs.find({"ns": "m103.messages"}).sort({$natural: -1})
 ```
+
 - Illustrating that one update statement may generate many entries in the oplog:
 ```
 use m103
@@ -189,29 +204,35 @@ sudo cp node4.conf arbiter.conf /etc/mongod/
 mongod -f /etc/mongod/node4.conf
 mongod -f /etc/mongod/arbiter.conf
 ```
+
 - From the Mongo shell of the replica set, adding the new secondary and the new arbiter:
 ```
 rs.add("m103:27014")
 rs.addArb("m103:28000")
 ```
+
 - Checking replica set makeup after adding two new nodes:
 ```
 rs.isMaster()
 ```
+
 - Removing the arbiter from our replica set:
 ```
 rs.remove("m103:28000")
 ```
+
 - Assigning the current configuration to a shell variable we can edit, in order to reconfigure the replica set:
 ```
 cfg = rs.conf()
 ```
+
 - Editing our new variable cfg to change topology - specifically, by modifying cfg.members:
 ```
 cfg.members[3].votes = 0
 cfg.members[3].hidden = true
 cfg.members[3].priority = 0
 ```
+
 - Updating our replica set to use the new configuration cfg:
 ```
 rs.reconfig(cfg)
