@@ -1,0 +1,23 @@
+--- Sharding Status --- 
+  sharding version: {
+  	"_id" : 1,
+  	"minCompatibleVersion" : 5,
+  	"currentVersion" : 6,
+  	"clusterId" : ObjectId("5e8e304b259e1750d635d8ac")
+  }
+  shards:
+        {  "_id" : "replExample",  "host" : "replExample/192.168.103.100:27011,m103:27003,m103:27012,m103:27013",  "state" : 1 }
+  active mongoses:
+        "3.6.17" : 1
+  autosplit:
+        Currently enabled: yes
+  balancer:
+        Currently enabled:  yes
+        Currently running:  no
+        Failed balancer rounds in last 5 attempts:  0
+        Migration Results for the last 24 hours: 
+                No recent migrations
+  databases:
+        {  "_id" : "config",  "primary" : "config",  "partitioned" : true }
+        {  "_id" : "newDB",  "primary" : "replExample",  "partitioned" : false }
+        {  "_id" : "testDatabase",  "primary" : "replExample",  "partitioned" : false }

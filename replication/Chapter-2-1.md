@@ -1,4 +1,4 @@
-# Chapter 2: Replication
+# Chapter 2 - Replication
 
 ## Setting Up a Replica Set
 ```
@@ -13,11 +13,6 @@ sudo cp node*.conf /etc/mongod/
 mongod -f /etc/mongod/node1.conf
 mongod -f /etc/mongod/node2.conf
 mongod -f /etc/mongod/node3.conf
-
-# Checking
-ss -tlnp
-ps -aef | grep [m]ongod
-```
 
 - Connecting to node1:
 ```

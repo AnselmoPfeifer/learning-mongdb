@@ -1,4 +1,4 @@
-# Chapter 0: Introduction & Setup
+# Chapter 0 - Introduction & Setup
 ```
 vagrant ssh
 mongo 

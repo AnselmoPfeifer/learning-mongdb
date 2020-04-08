@@ -2,3 +2,4 @@
 dataset/
 standalone/labs.conf
 replication/labs.conf
+sharding/labs.conf

@@ -1,4 +1,4 @@
-# Chapter 1: The Mongod
+# Chapter 1 - The Mongod
 
 ## Launching and shutdown Mongo Server  
 - 1: 

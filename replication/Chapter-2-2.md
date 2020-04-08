@@ -1,4 +1,4 @@
-# Chapter 2: Replication
+# Chapter 2 - Replication
 
 ## Reads and Writes on a Replica Set
 - Starting and connecting to replSetName: replExample
@@ -80,8 +80,6 @@ mongo --host "m103:27011" -u "m103-admin" -p "m103-pass" --authenticationDatabas
 ```
 rs.isMaster()
 ```
-
-Failover and Elections
 
 ## Failover and Elections
 - Storing replica set configuration as a variable cfg:
