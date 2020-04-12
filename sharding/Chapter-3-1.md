@@ -1,4 +1,5 @@
 # Chapter 3 - Sharded Cluster
+Sharding is a method for distributing data across multiple machines. MongoDB uses sharding to support deployments with very large data sets and high throughput operations, [more information](https://docs.mongodb.com/manual/sharding/).
 
 ## Setting Up a Sharded Cluster
 - Configuration files for each nodes
@@ -61,7 +62,7 @@ db.shutdownServer()
 rs.stepDown()
 ```
 
-- Adding new shard to cluster from mongos, and check with `sh.status()` - [Result](result/shStatus.txt)
+- Adding new shard to cluster from mongos, and check with `sh.status()` - [Result](result/shStatus.json)
 ```
 mongo --port 26000 --username m103-admin --password m103-pass --authenticationDatabase admin
 sh.addShard("replExample/m103:27012")
@@ -141,6 +142,6 @@ mongod -f /etc/mongod/node1.conf
 Check the output of `sh.status()` to make sure it's included as a shard.
 ```
 mongo --port 26000 --username m103-admin --password m103-pass --authenticationDatabase admin
-sh.addShard("m103-repl/192.168.103.100:27011")
+sh.addShard("m103-repl/192.168.103.100:27001")
 sh.status()
 ```
