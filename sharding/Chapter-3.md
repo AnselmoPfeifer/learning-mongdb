@@ -76,8 +76,7 @@ sh.status()
 - Switch to config DB: `use config`
 - Query config.databases: `db.databases.find().pretty()`
 - Query config.collections: `db.collections.find().pretty()`
-```json
-{
+```json{
 	"_id" : "config.system.sessions",
 	"lastmodEpoch" : ObjectId("5e91c30a14e33b5c89634be3"),
 	"lastmod" : ISODate("1970-02-19T17:02:47.296Z"),
@@ -141,8 +140,7 @@ show collections
 ```
 
 - Enable sharding on the m103 database: `sh.enableSharding("m103")`
-```json
-{
+```json{
 	"ok" : 1,
 	"operationTime" : Timestamp(1586816331, 8),
 	"$clusterTime" : {
@@ -156,8 +154,7 @@ show collections
 ```
 
 - Find one document from the products collection, to help us choose a shard key: `db.products.findOne()`
-```json
-{
+```json{
 	"_id" : ObjectId("573f706ff29313caab7d7395"),
 	"sku" : 1000000749,
 	"name" : "Gods And Heroes: Rome Rising - Windows [Digital Download]",
@@ -169,8 +166,7 @@ show collections
 ```
 
 - Create an index on sku: `db.products.createIndex( { "sku" : 1 } )`
-```json
-{
+```json{
 	"raw" : {
 		"m103-repl/192.168.103.100:27001,m103:27002,m103:27003" : {
 			"createdCollectionAutomatically" : false,
@@ -191,3 +187,79 @@ show collections
 }
 ```
 
+
+## Chunks
+- Show collections in config database:
+```
+use config
+show collections
+```
+- Find one document from the chunks collection: `db.chunks.findOne()`
+```json
+{
+	"_id" : "config.system.sessions-_id_MinKey",
+	"lastmod" : Timestamp(2, 0),
+	"lastmodEpoch" : ObjectId("5e94e395ce31c10fb88f24de"),
+	"ns" : "config.system.sessions",
+	"min" : {
+		"_id" : { "$minKey" : 1 }
+	},
+	"max" : {
+		"_id" : { "$maxKey" : 1 }
+	},
+	"shard" : "m103-repl-2"
+}
+```
+- Change the chunk size and check the status of the sharded cluster: 
+```
+db.settings.save({_id: "chunksize", value: 2})
+sh.status()
+```
+```json
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : "chunksize" })
+```
+
+## Balancing
+To read more about scheduling the balancer, check the [MongoDB Sharding docs](https://docs.mongodb.com/manual/tutorial/manage-sharded-cluster-balancer/#sharding-schedule-balancing-window).
+
+- Start the balancer: `sh.startBalancer()`
+```json{
+	"ok" : 1,
+	"operationTime" : Timestamp(1587760061, 1),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1587760061, 1),
+		"signature" : {
+			"hash" : BinData(0,"RG2BGjYAiIGTSKVNIKYEBI+lxSE="),
+			"keyId" : NumberLong("6815321136847388699")
+		}
+	}
+}
+```
+
+- Stop the balancer: `sh.stopBalancer()`
+```json{
+	"ok" : 1,
+	"operationTime" : Timestamp(1587760092, 1),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1587760092, 1),
+		"signature" : {
+			"hash" : BinData(0,"uxd6JBowi9wlO7tfDBicM2wO2Vg="),
+			"keyId" : NumberLong("6815321136847388699")
+		}
+	}
+}
+```
+
+- Enable/disable the balancer: `sh.setBalancerState(true)`
+```json{
+	"ok" : 1,
+	"operationTime" : Timestamp(1587760116, 1),
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1587760116, 1),
+		"signature" : {
+			"hash" : BinData(0,"L46cIk7/QF5ngc8vuTS+XYGFpng="),
+			"keyId" : NumberLong("6815321136847388699")
+		}
+	}
+}
+```

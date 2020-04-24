@@ -1,5 +1,4 @@
 .vagrant/
-dataset/
-standalone/labs.conf
-replication/labs.conf
-sharding/labs.conf
+standalone/labs.md
+replication/labs.md
+sharding/labs.md
